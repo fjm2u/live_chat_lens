@@ -104,7 +104,9 @@ flowchart LR
 
 ## ライセンス
 
-`GPL-2.0-or-later`。このPluginはOBSの`libobs`と`obs-frontend-api`にリンクします。OBS Studioと`libobs`のコードはGPL v2またはそれ以降で配布されているため、それに合わせてこのライセンスを選びました。`or-later`はv2だけに固定する意味ではありません。ライセンス本文は`LICENSE`を参照してください。Qtなど依存ライブラリを含むバイナリを配布する際は、それぞれのライセンス条件も確認してください。
+Live Chat Lens独自のソースコードは **MIT License** で公開します。ライセンス本文は`LICENSE`を参照してください。
+
+このPluginはOBS Studioの`libobs`と`obs-frontend-api`にリンクします。OBS Studio / libobsは`GPL-2.0-or-later`で提供されているため、OBSと組み合わせたPluginバイナリを配布する場合は、適用されるGPL条件を含む第三者ライセンス条件を満たす必要があります。このリポジトリをMITで公開することは、OBS Studio、libobs、Qtなど依存コンポーネントのライセンス条件を変更するものではありません。
 
 ## 公開状態
 
