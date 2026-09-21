@@ -71,14 +71,30 @@ python3 scripts/latency-report.py '/path/to/events.jsonl'
 
 KPIの評価手順は [docs/acceptance.md](docs/acceptance.md)、今回の検証状態は [docs/verification.md](docs/verification.md)。👍の割合だけをRecommendation Precisionとは扱いません。
 
-## 構造
+## アーキテクチャ
 
-- `src/core/`：Jev・Qtに依存しないフィルター、ランキング、表示安定化
-- `src/youtube/`：Video URL検証・コメント変換
-- `src/jev/`：Jev request / response契約
-- `src/plugin/`：OBS登録、専用スレッドの取得・評価・ログ
-- `src/ui/`：Native Dock、設定、フィードバック
-- `tests/`：core・API契約・UI回帰テスト、任意実行のJev実APIスモーク
+OBSに読み込まれるC++のNative Pluginです。UIはOBSのDock内で動き、通信・JSON処理・ログ書き込みを専用の`QThread`上の`Engine`に任せます。ブラウザ、外部プロセス、ローカルHTTPサーバーは使いません。
+
+```mermaid
+flowchart LR
+    Y[YouTube Data API<br/>ライブチャット] -->|REST polling| E[Engine<br/>専用QThread]
+    E --> F[BasicFilter<br/>重複・長さ・連投]
+    F -->|最大16件をまとめて送信| J[Jev API<br/>hide / pick / type]
+    J -->|評価結果| E
+    E -->|Qt signal・session ID| D[CommentDock<br/>OBS UIスレッド]
+    D --> B[RecommendationBuffer<br/>順位・表示位置の安定化]
+    B --> V[Native Dock<br/>最大10件]
+    D -->|👍・×・表示イベント| E
+    E --> L[events.jsonl<br/>OBS Plugin設定フォルダ]
+```
+
+1. `src/plugin/plugin-main.cpp`がOBSのFrontend APIにDockを登録します。`src/ui/comment-dock.cpp`は入力、状態表示、推薦カード、👍・×を担当します。
+2. `src/youtube/`がURLからVideo IDを検証・抽出し、API応答をコメントへ変換します。`Engine`は`videos.list`でライブチャットIDを取得し、`liveChatMessages.list`を指定間隔でpollingします。接続直後の最初のページは履歴として読み飛ばします。
+3. `src/core/filter.cpp`が候補を絞り、`Engine`が短い間隔でJevへまとめて送ります。`src/jev/`はリクエストと応答の形式を検証し、コメントごとにhide、推薦度、種類を受け取ります。不正応答やAPI障害時は未評価の本文をDockへ渡しません。
+4. 評価結果をQt signalでUIへ渡します。`src/core/recommendation-buffer.cpp`が期限切れ候補の除去、順位、表示位置の固定を担当し、Dockが上位のカードを描画します。再接続後はsession IDが異なる古い結果を無視します。
+5. `Engine`がイベントを`events.jsonl`に記録します。設定にはVideo URLと表示条件だけを保存し、APIキーとコメント本文は保存しません。
+
+主要な責務は`src/core/`（Qt・Jev非依存のフィルターと順位）、`src/youtube/`（YouTube形式）、`src/jev/`（Jev形式）、`src/plugin/`（OBS登録と通信・ログ）、`src/ui/`（Dock）に分かれます。`tests/`にはcore、API契約、UIの回帰テストと任意実行のJev実APIスモークがあります。
 
 ## 一次資料
 
@@ -88,4 +104,4 @@ KPIの評価手順は [docs/acceptance.md](docs/acceptance.md)、今回の検証
 
 ## ライセンス
 
-GPL-2.0-or-later。`LICENSE`参照。
+`GPL-2.0-or-later`。このPluginはOBSの`libobs`と`obs-frontend-api`にリンクします。OBS Studioと`libobs`のコードはGPL v2またはそれ以降で配布されているため、それに合わせてこのライセンスを選びました。`or-later`はv2だけに固定する意味ではありません。ライセンス本文は`LICENSE`を参照してください。Qtなど依存ライブラリを含むバイナリを配布する際は、それぞれのライセンス条件も確認してください。
