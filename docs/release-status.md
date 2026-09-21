@@ -10,6 +10,6 @@ This repository is public for source review and development. **No stable binary 
 | Streaming stability | Not measured | Exercise recording/streaming, long sessions, and frame-time impact |
 | Windows / Linux | CMake targets exist; no real-device validation | Build, install, and test packages on each claimed platform |
 | Privacy and security | Keys are intended to remain in memory; event logs omit message text | Review shipped artifacts and logs for credentials, personal data, and third-party dependencies |
-| OBS forum listing | Not submitted | Meet the current [resource and IP policy](https://obsproject.com/forum/threads/forum-resource-and-ip-policy.178569/), including stable-release, source, branding, description, and AI-use disclosure requirements |
+| OBS forum listing | Not submitted | Meet the current [resource and IP policy](https://obsproject.com/forum/threads/forum-resource-and-ip-policy.178569/), including stable-release, source, branding, and description rules. AI use must be disclosed; resources written entirely or largely with AI coding tools are not permitted |
 
 The development bundle in `build/` is ignored by Git. It is ad-hoc signed for local testing and is **not** a release artifact. A GitHub Release or OBS forum resource should point to a versioned, platform-specific archive that was tested after packaging. This checklist describes readiness; it does not claim that moderation will approve a submission.

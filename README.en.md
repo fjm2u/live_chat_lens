@@ -36,4 +36,4 @@ The test and acceptance boundaries are recorded in [verification](docs/verificat
 
 The source is offered under **GPL-2.0-or-later**; see [LICENSE](LICENSE). This matches the GPL v2-or-later terms used by OBS Studio and libobs, which this plugin links against. Binary distributors must also satisfy the terms of the Qt components they ship.
 
-Codex AI assistance was used in developing the code and documentation. The plugin still requires independent review and live-use validation before a stable release. Any future OBS forum submission should disclose how AI tools were used, as required by the [OBS resource policy](https://obsproject.com/forum/threads/forum-resource-and-ip-policy.178569/).
+Codex AI assistance was used in developing the code and documentation. The plugin still requires independent review and live-use validation before a stable release. The [OBS resource policy](https://obsproject.com/forum/threads/forum-resource-and-ip-policy.178569/) requires disclosure of AI use and says resources written entirely or largely with AI coding tools are not permitted. Disclosure alone does not guarantee that this project is eligible for an OBS forum listing.
