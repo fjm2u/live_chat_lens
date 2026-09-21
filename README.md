@@ -105,3 +105,9 @@ flowchart LR
 ## ライセンス
 
 `GPL-2.0-or-later`。このPluginはOBSの`libobs`と`obs-frontend-api`にリンクします。OBS Studioと`libobs`のコードはGPL v2またはそれ以降で配布されているため、それに合わせてこのライセンスを選びました。`or-later`はv2だけに固定する意味ではありません。ライセンス本文は`LICENSE`を参照してください。Qtなど依存ライブラリを含むバイナリを配布する際は、それぞれのライセンス条件も確認してください。
+
+## 公開状態
+
+[English overview](README.en.md) / [リリース状態](docs/release-status.md)。現在のGitHub公開はソースの確認用です。安定版のバイナリ配布やOBSフォーラムへのPlugin掲載はまだ行っていません。問題報告は[GitHub Issues](https://github.com/fjm2u/live_chat_lens/issues)へ。ログやスクリーンショットからキー・トークン・公開できないチャット内容を除いてください。
+
+開発にはCodexによるAI支援を使用しました。安定版を配布する前に、独立したコードレビューと実ライブでの受け入れ確認が必要です。OBSフォーラムに掲載を申請する場合は、AIの使用方法を掲載説明にも明記します。
