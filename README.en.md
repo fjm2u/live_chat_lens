@@ -34,6 +34,8 @@ The test and acceptance boundaries are recorded in [verification](docs/verificat
 
 ## License and development disclosure
 
-The source is offered under **GPL-2.0-or-later**; see [LICENSE](LICENSE). This matches the GPL v2-or-later terms used by OBS Studio and libobs, which this plugin links against. Binary distributors must also satisfy the terms of the Qt components they ship.
+Source code authored for Live Chat Lens is offered under the **MIT License**; see [LICENSE](LICENSE).
+
+This plugin links against OBS Studio's `libobs` and `obs-frontend-api`, which are distributed under `GPL-2.0-or-later`. Distributors of plugin binaries used with OBS Studio must comply with the applicable GPL terms and the licenses of other bundled dependencies such as Qt. Licensing this repository under MIT does not alter the license terms of OBS Studio, libobs, Qt, or other third-party components.
 
 Codex AI assistance was used in developing the code and documentation. The plugin still requires independent review and live-use validation before a stable release. The [OBS resource policy](https://obsproject.com/forum/threads/forum-resource-and-ip-policy.178569/) requires disclosure of AI use and says resources written entirely or largely with AI coding tools are not permitted. Disclosure alone does not guarantee that this project is eligible for an OBS forum listing.
