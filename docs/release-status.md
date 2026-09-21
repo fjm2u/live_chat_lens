@@ -4,7 +4,7 @@ This repository is public for source review and development. **No stable binary 
 
 | Area | Current evidence | Before a stable download |
 | --- | --- | --- |
-| Source | GPL-2.0-or-later source, tests, and documentation are public | Keep source aligned with each released binary |
+| Source | MIT-licensed project source, tests, and documentation are public | Keep source aligned with each released binary and satisfy applicable OBS/third-party license terms |
 | macOS arm64 | Local build loaded in OBS Studio 32.2.2; dock opened; core, protocol, and UI tests passed | Test an archive installed on a separate machine; sign and notarize a distributable package |
 | YouTube → Jev → dock | Jev API smoke with synthetic input; no full live-chat acceptance | Verify a permitted live chat, API errors, reconnects, and expected display behavior |
 | Streaming stability | Not measured | Exercise recording/streaming, long sessions, and frame-time impact |
