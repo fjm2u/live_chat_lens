@@ -2,6 +2,12 @@
 
 Live Chat Lens is a third-party native dock for OBS Studio. Its on-screen name is **AI Comments**. It reads new messages from a YouTube live chat, asks the Jev API to classify them, and shows up to ten recommendations to the streamer. It does not post messages, moderate YouTube chat, or add an overlay to the stream. It is not affiliated with the OBS Project.
 
+![Live Chat Lens shows streamers only the comments worth picking up](https://raw.githubusercontent.com/fjm2u/live_chat_lens/main/docs/images/live-chat-lens-streamer-overview-en.png)
+
+![Live Chat Lens filters incoming chat and ranks the best comments](https://raw.githubusercontent.com/fjm2u/live_chat_lens/main/docs/images/live-chat-lens-comment-ranking-flow-en.png)
+
+![How to use Live Chat Lens entirely inside OBS](https://raw.githubusercontent.com/fjm2u/live_chat_lens/main/docs/images/live-chat-lens-obs-setup-en.png)
+
 **Status:** source preview. There is no supported binary release yet. The macOS arm64 module has been built, loaded in OBS Studio 32.2.2, and its dock has been inspected locally. End-to-end testing with a real YouTube live chat, sustained streaming tests, distribution signing and notarization, and Windows/Linux testing remain open. See [release status](docs/release-status.md).
 
 ## How it works
