@@ -1,0 +1,5 @@
+build*/
+.deps/
+.env*
+*.jsonl
+.DS_Store
